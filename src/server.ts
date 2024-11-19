@@ -1,8 +1,6 @@
-import config from "./app/config";
-const mongoose = require("mongoose");
-import app from "./app";
-
-const PORT = 5000;
+import config from './app/config';
+import mongoose from 'mongoose';
+import app from './app';
 
 async function main() {
   try {
@@ -17,3 +15,5 @@ async function main() {
 
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
+
+main();
