@@ -6,14 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const student_route_1 = require("./app/modules/student/student.route");
+//parsers
 const app = (0, express_1.default)();
 //parsers
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
-//application routers 
-app.use('api/v1/students', student_route_1.StudentRoutes);
+// application routes
+app.use('/api/v1/students', student_route_1.StudentRoutes);
 const getAController = (req, res) => {
-    res.send('Hello World!');
+    res.send('hello world');
 };
 app.get('/', getAController);
 exports.default = app;

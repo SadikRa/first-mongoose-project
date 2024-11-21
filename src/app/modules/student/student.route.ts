@@ -3,8 +3,10 @@ import { StudentController } from './student.controller';
 
 const router = express.Router();
 
-/// we will call controller func
-router.post('/create-student', StudentController.createStudent) ;
+router.post('/create-student', StudentController.createStudent);
 
+router.get('/', StudentController.getAllStudents);
 
-export const StudentRoutes = router
+router.get('/:studentId', StudentController.getSingleStudent);
+
+export const StudentRoutes = router;

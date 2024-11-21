@@ -50,5 +50,4 @@ const studentSchema = new Schema<Student>({
 // 3. Create a Model.
 const StudentModel = model<Student>('Student', studentSchema);
 
-
 export default StudentModel;

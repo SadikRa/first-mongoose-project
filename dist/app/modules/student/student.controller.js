@@ -13,19 +13,47 @@ exports.StudentController = void 0;
 const student_services_1 = require("./student.services");
 const createStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const student = req.body;
-        // will call services
-        const result = yield student_services_1.StudentServices.createStudentIntoDB(student);
-        //send response
+        const { student: studentData } = req.body;
+        const result = yield student_services_1.StudentServices.createStudentIntoDB(studentData);
         res.status(200).json({
             success: true,
-            massage: 'student is created is successfully',
+            message: 'Student is created succesfully',
+            data: result,
         });
     }
-    catch (error) {
-        console.log(error);
+    catch (err) {
+        console.log(err);
+    }
+});
+const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield student_services_1.StudentServices.getAllStudentsFromDB();
+        res.status(200).json({
+            success: true,
+            message: 'Students are retrieved succesfully',
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+const getSingleStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { studentId } = req.params;
+        const result = yield student_services_1.StudentServices.getSingleStudentFromDB(studentId);
+        res.status(200).json({
+            success: true,
+            message: 'Student is retrieved succesfully',
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
     }
 });
 exports.StudentController = {
-    createStudent
+    createStudent,
+    getAllStudents,
+    getSingleStudent,
 };
